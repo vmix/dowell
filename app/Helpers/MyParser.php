@@ -25,30 +25,30 @@ class MyParser {
         $specifications = [];
 
         foreach($xml->shop->offers->offer as $offer) {
-            $specifications['id'] = (string)$offer['id'];
+            $specifications['offerId'] = (int)$offer['id'];
             $specifications['available'] = (string)$offer['available'];
             $specifications['url'] = (string)$offer->url;
-            $specifications['price'] = (string)$offer->price;
-            $specifications['currencyId'] = (string)$offer->currencyId;
-            $specifications['categoryId'] = (string)$offer->categoryId;
+            $specifications['price'] = (int)$offer->price;
+            $specifications['currencyId'] = $offer->currencyId;
+            $specifications['categoryId'] = $offer->categoryId;
             $specifications['picture'] = (string)$offer->picture;
-            $specifications['delivery'] = (string)$offer->delivery;
+            $specifications['delivery'] = (int)$offer->delivery;
             $specifications['name'] = (string)$offer->name;
             $specifications['model'] = (string)$offer->model;
             $specifications['description'] = (string)$offer->description;
             $specifications['vendor'] = (string)$offer->vendor;
             $specifications['vendorCode'] = (string)$offer->vendorCode;
-            $specifications['manufacturer_warranty'] = (string)$offer->manufacturer_warranty;
+            $specifications['manufacturer_warranty'] = (int)$offer->manufacturer_warranty;
             $specifications['sales_notes'] = (string)$offer->sales_notes;
-            $specifications['delivery_cost'] = (string)$offer->{'delivery-options'}->option['cost'];
+            $specifications['delivery_cost'] = (int)$offer->{'delivery-options'}->option['cost'];
             $specifications['delivery_days'] = (string)$offer->{'delivery-options'}->option['days'];
 
             if(isset($offer->param)) {
-                $temp = [];
+                $params = [];
                 foreach($offer->param as $param) {
-                    $temp[] = $param['name']. ' ' . $param;
+                    $params[] = $param['name']. ' ' . $param;
                 }
-                $specifications['params'] = serialize($temp);
+                $specifications['params'] = serialize($params);
             } else {
                 $specifications['params'] = null;
             }

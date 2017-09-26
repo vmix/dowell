@@ -15,14 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->unsignedInteger('id')->default(0);
+            $table->integer('offerId')->unsigned();
             $table->string('url', 255)->nullable();
-            $table->decimal('price', 8, 2)->nullable();
+            $table->decimal('price', 8, 0)->nullable();
             $table->char('currencyId', 3)->nullable();
             $table->string('categoryId', 10)->nullable();
             $table->string('picture', 255)->nullable();
             $table->integer('delivery')->nullable();
-            $table->string('name', 255)->default('test_name');
+            $table->string('name', 255);
             $table->string('model', 255)->nullable();
             $table->text('description')->nullable();
             $table->string('vendor', 50)->nullable();
@@ -30,11 +30,11 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('manufacturer_warranty')->nullable();
             $table->text('sales_notes')->nullable();
             $table->text('params')->nullable();
-            $table->decimal('delivery_cost', 8,2)->nullable();
+            $table->decimal('delivery_cost', 8,0)->nullable();
             $table->integer('delivery_days')->nullable();
-            $table->tinyInteger('available')->default(3);
+            $table->tinyInteger('available');
             $table->timestamps();
-            $table->unique('id');
+            $table->primary('offerId');
         });
     }
 

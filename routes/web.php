@@ -19,7 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/products', 'ProductController@show');
-Route::post('/products', 'ProductController@view');
+Route::get('/parser', 'ProductController@parser');
+Route::post('/parser', 'ProductController@store');
+Route::get('/view', 'ProductController@view')->name('view');
 
 Route::get('test', 'TestController@index');

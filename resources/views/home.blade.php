@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                        <p><a href="/parser">Работа с парсером</a></p>
                 </div>
             </div>
         </div>
