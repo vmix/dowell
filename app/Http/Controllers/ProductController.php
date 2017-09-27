@@ -23,7 +23,7 @@ class ProductController extends Controller
         $size = count($products);
         for ($i = 0; $i < $size; $i++) {
 
-            Product::updateOrCreate([
+            Product::updateOrCreate(['offerId' => $products[$i]['offerId']], [
                 'offerId' => $products[$i]['offerId'],
                 'url' => $products[$i]['url'],
                 'name' => $products[$i]['name'],
@@ -32,17 +32,16 @@ class ProductController extends Controller
                 'price' => (double)$products[$i]['price'],
                 'categoryId' => $products[$i]['categoryId'],
                 'picture' => $products[$i]['picture'],
-                'delivery' => $products[$i]['delivery'],
+                'delivery' => (int)$products[$i]['delivery'],
                 'description' => $products[$i]['description'],
                 'vendor' => $products[$i]['vendor'],
                 'vendorCode' => $products[$i]['vendorCode'],
-                'manufacturer_warranty' => $products[$i]['manufacturer_warranty'],
+                'manufacturer_warranty' => $products[$i]['manufacturer_warranty'] ? 1 : 0,
                 'sales_notes' => $products[$i]['sales_notes'],
                 'params' => $products[$i]['params'],
                 'delivery_cost' => (int)$products[$i]['delivery_cost'],
                 'delivery_days' => (int)$products[$i]['delivery_days'],
-                'available' => $products[$i]['available']
-
+                'available' => $products[$i]['available'] ? 1: 0
             ]);
 
         }
