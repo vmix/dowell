@@ -23,29 +23,27 @@ class ProductController extends Controller
         $size = count($products);
         for ($i = 0; $i < $size; $i++) {
 
-            $product = new Product;
+            Product::updateOrCreate(['offerId' => $products[$i]['offerId']], [
+                'offerId' => $products[$i]['offerId'],
+                'url' => $products[$i]['url'],
+                'name' => $products[$i]['name'],
+                'model' => $products[$i]['model'],
+                'currencyId' => $products[$i]['currencyId'],
+                'price' => (double)$products[$i]['price'],
+                'categoryId' => $products[$i]['categoryId'],
+                'picture' => $products[$i]['picture'],
+                'delivery' => (int)$products[$i]['delivery'],
+                'description' => $products[$i]['description'],
+                'vendor' => $products[$i]['vendor'],
+                'vendorCode' => $products[$i]['vendorCode'],
+                'manufacturer_warranty' => $products[$i]['manufacturer_warranty'] ? 1 : 0,
+                'sales_notes' => $products[$i]['sales_notes'],
+                'params' => $products[$i]['params'],
+                'delivery_cost' => (int)$products[$i]['delivery_cost'],
+                'delivery_days' => (int)$products[$i]['delivery_days'],
+                'available' => $products[$i]['available'] ? 1: 0
+            ]);
 
-            $product->offerId = $products[$i]['offerId'];
-            $product->url = $products[$i]['url'];
-            $product->name = $products[$i]['name'];
-            $product->model = $products[$i]['model'];
-            $product->currencyId = $products[$i]['currencyId'];
-            $product->price = (double)$products[$i]['price'];
-            $product->categoryId = $products[$i]['categoryId'];
-            $product->picture = $products[$i]['picture'];
-            $product->delivery = $products[$i]['delivery'];
-            $product->description = $products[$i]['description'];
-            $product->vendor = $products[$i]['vendor'];
-            $product->vendorCode = $products[$i]['vendorCode'];
-            $product->manufacturer_warranty = $products[$i]['manufacturer_warranty'] == true ? 1 : 0;
-
-            $product->sales_notes = $products[$i]['sales_notes'];
-            $product->params = $products[$i]['params'];
-            $product->delivery_cost = (int)$products[$i]['delivery_cost'];
-            $product->delivery_days = (int)$products[$i]['delivery_days'];
-            $product->available = $products[$i]['available'] == true ? 1 : 0;
-
-            $product->save();
         }
 
         return redirect()->route('view');
