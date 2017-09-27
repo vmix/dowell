@@ -12,7 +12,7 @@ class Product extends Model
     public $incrementing = false; // because we use a non-incrementing primary key
     public $timestamps = true; // because we have two fields 'created_at' and 'updated_at'
 
-    protected $fillable = ['*'];
+    protected $primaryKey = 'offerId';
     protected $guarded = []; // all fields are writable
 
 

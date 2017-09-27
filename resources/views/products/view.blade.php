@@ -16,7 +16,7 @@
                     <div class="col-md-6">
                         <h5 class="card-title"><?= 'Модель: ' . $product['model'] ?></h5>
                         {{--<a href="/product/{{$product['id']}}" class="btn btn-primary disabled">Подробно...</a>--}} <!-- it's need for 'Detail Page' about each product-->
-                        <div class="card-text"><?= "<b>Категория: </b>" . $product['model'] . "<b> ID товара: </b>" . $product['categoryId'] ?></div>
+                        <div class="card-text"><?= "<b>Категория: </b>" . $product['categoryId'] . "<b> ID товара: </b>" . $product['offerId'] ?></div>
                         <div class="card-text"><?= 'URL: ' . '<a href="' . $product['url'] . '">' . $product['url'] . '</a>' ?></div>
                         <div class="card-text"><?= 'Цена: ' . $product['price']. ' ' . $product['currencyId']?></div>
                         <div class="card-text"><?= 'Картинка: ' . '<a href="' . $product['picture'] . '">' . $product['picture'] . '</a>' ?></div>
