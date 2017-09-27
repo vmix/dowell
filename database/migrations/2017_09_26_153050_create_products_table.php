@@ -15,7 +15,8 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('offerId')->unsigned();
+            $table->increments('id');
+            $table->integer('offerId');
             $table->string('url', 255)->nullable();
             $table->decimal('price', 8, 0)->nullable();
             $table->char('currencyId', 3)->nullable();
@@ -34,7 +35,7 @@ class CreateProductsTable extends Migration
             $table->integer('delivery_days')->nullable();
             $table->tinyInteger('available');
             $table->timestamps();
-            $table->primary('offerId');
+            $table->unique('offerId');
         });
     }
 
