@@ -23,4 +23,6 @@ Route::get('/parser', 'ProductController@parser');
 Route::post('/parser', 'ProductController@store');
 Route::get('/view', 'ProductController@view')->name('view');
 
+Route::get('show', 'ShowController@show')->name('show');
+
 Route::get('test', 'TestController@index');
